@@ -1,0 +1,13 @@
+HETATM    1  CB  MEOH    1      -1.440   0.433  -0.003  1.00  0.00           C  
+HETATM    2  OG  MEOH    1      -0.466   1.310  -0.548  1.00  0.00           O  
+HETATM    3  HB3 MEOH    1      -2.420   0.911  -0.003  1.00  0.00           H  
+HETATM    4  HG1 MEOH    1       0.387   0.844  -0.515  1.00  0.00           H  
+HETATM    5  HB1 MEOH    1      -1.470  -0.480  -0.606  1.00  0.00           H  
+HETATM    6  HB2 MEOH    1      -1.149   0.176   1.020  1.00  0.00           H  
+CONECT    1    2    3    5    6
+CONECT    2    1    4
+CONECT    3    1
+CONECT    4    2
+CONECT    5    1
+CONECT    6    1
+END
