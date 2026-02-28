@@ -1,0 +1,91 @@
+;
+;	File 'meoh/topol_gmx.top' was generated
+;	By user: jonathan (1000)
+;	On host: jonathan-B550-UD-AC
+;	At date: Fri Feb 27 10:15:58 2026
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	              :-) GROMACS - gmx pdb2gmx, 2024.2-plumed_2.9.2 (-:
+;	
+;	Executable:   /usr/local/gromacs/bin/gmx
+;	Data prefix:  /usr/local/gromacs
+;	Working dir:  /home/jonathan/Documents/grabelab/tools/fep-tutorials/gmx-relative-fep
+;	Command line:
+;	  gmx pdb2gmx -f meoh/meoh.pdb -o meoh/meoh.gro -p meoh/topol_gmx.top -i meoh/posre.itp
+;	Force field was read from current directory or a relative path - path added.
+;
+
+; Include forcefield parameters
+#include "./charmm36-jul2022.ff/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Other               3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   1 MEOH rtp MEOH q  0.0
+     1      CG331      1   MEOH     CB      1      -0.04     12.011
+     2      OG311      1   MEOH     OG      1      -0.65    15.9994
+     3       HGP1      1   MEOH    HG1      1       0.42      1.008
+     4       HGA3      1   MEOH    HB1      1       0.09      1.008
+     5       HGA3      1   MEOH    HB2      1       0.09      1.008
+     6       HGA3      1   MEOH    HB3      1       0.09      1.008   ; qtot 0
+
+[ bonds ]
+;  ai    aj funct            c0            c1            c2            c3
+    1     2     1 
+    1     4     1 
+    1     5     1 
+    1     6     1 
+    2     3     1 
+
+[ pairs ]
+;  ai    aj funct            c0            c1            c2            c3
+    3     4     1 
+    3     5     1 
+    3     6     1 
+
+[ angles ]
+;  ai    aj    ak funct            c0            c1            c2            c3
+    2     1     4     5 
+    2     1     5     5 
+    2     1     6     5 
+    4     1     5     5 
+    4     1     6     5 
+    5     1     6     5 
+    1     2     3     5 
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3            c4            c5
+    4     1     2     3     9 
+    5     1     2     3     9 
+    6     1     2     3     9 
+
+; Include Position restraint file
+#ifdef POSRES
+#include "meoh/posre.itp"
+#endif
+
+; Include water topology
+#include "./charmm36-jul2022.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "./charmm36-jul2022.ff/ions.itp"
+
+[ system ]
+; Name
+Protein
+
+[ molecules ]
+; Compound        #mols
+Other               1

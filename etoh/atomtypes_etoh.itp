@@ -1,0 +1,9 @@
+[ atomtypes ]
+; Extracted atomtypes from CHARMM force field
+
+ CG321     6    12.011000    0.000     A  0.358141284692  0.2343040  ; aliphatic C for CH2
+ CG331     6    12.011000    0.000     A  0.365268474438  0.3263520  ; aliphatic C for methyl group (-CH3)
+  HGA2     1     1.008000    0.000     A  0.238760856462  0.1464400  ; alphatic proton, CH2
+  HGA3     1     1.008000    0.000     A  0.238760856462  0.1004160  ; alphatic proton, CH3
+  HGP1     1     1.008000    0.000     A  0.040001352445  0.1924640  ; polar H
+ OG311     8    15.999400    0.000     A  0.314487247504  0.8037464  ; hydroxyl oxygen

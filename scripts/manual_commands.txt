@@ -1,0 +1,4 @@
+gmx pdb2gmx -f etoh/etoh.pdb -o etoh/etoh.gro -p etoh/topol_gmx.top -i etoh/posre.itp
+gmx pdb2gmx -f meoh/meoh.pdb -o meoh/meoh.gro -p meoh/topol_gmx.top -i meoh/posre.itp
+
+python ../scripts/put_ff_params_in_itp_v2.py topol_gmx.top ../charmm36-jul2022.ff topol_withparams.top

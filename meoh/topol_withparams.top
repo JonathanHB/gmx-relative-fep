@@ -1,24 +1,24 @@
 ;
-;	File 'topol.top' was generated
-;	By user: jonathanborowsky (501)
-;	On host: Jonathans-MacBook-Pro.local
-;	At date: Sun Feb 22 06:38:54 2026
+;	File 'meoh/topol_gmx.top' was generated
+;	By user: jonathan (1000)
+;	On host: jonathan-B550-UD-AC
+;	At date: Fri Feb 27 10:15:58 2026
 ;
 ;	This is a standalone topology file
 ;
 ;	Created by:
-;	              :-) GROMACS - gmx pdb2gmx, 2023.4-conda_forge (-:
+;	              :-) GROMACS - gmx pdb2gmx, 2024.2-plumed_2.9.2 (-:
 ;	
-;	Executable:   /opt/anaconda3/envs/grabelab/bin.SSE2/gmx
-;	Data prefix:  /opt/anaconda3/envs/grabelab
-;	Working dir:  /Users/jonathanborowsky/Documents/grabelab/projects/cftr-glpg/fep
+;	Executable:   /usr/local/gromacs/bin/gmx
+;	Data prefix:  /usr/local/gromacs
+;	Working dir:  /home/jonathan/Documents/grabelab/tools/fep-tutorials/gmx-relative-fep
 ;	Command line:
-;	  gmx pdb2gmx -f meoh/meoh.pdb -o meoh/meoh.gro
+;	  gmx pdb2gmx -f meoh/meoh.pdb -o meoh/meoh.gro -p meoh/topol_gmx.top -i meoh/posre.itp
 ;	Force field was read from current directory or a relative path - path added.
 ;
 
 ; Include forcefield parameters
-#include "../charmm36-jul2022.ff/forcefield.itp"
+#include "./charmm36-jul2022.ff/forcefield.itp"
 
 [ moleculetype ]
 ; Name            nrexcl
@@ -36,11 +36,11 @@ Other               3
 
 [ bonds ]
 ;  ai    aj funct            c0            c1            c2            c3
-    1     2     1 
-    1     4     1 
-    1     5     1 
-    1     6     1 
-    2     3     1 
+1 2 1 0.14200000 358150.40
+1 4 1 0.11110000 269449.60
+1 5 1 0.11110000 269449.60
+1 6 1 0.11110000 269449.60
+2 3 1 0.09600000 456056.00
 
 [ pairs ]
 ;  ai    aj funct            c0            c1            c2            c3
@@ -50,27 +50,27 @@ Other               3
 
 [ angles ]
 ;  ai    aj    ak funct            c0            c1            c2            c3
-    2     1     4     5 
-    2     1     5     5 
-    2     1     6     5 
-    4     1     5     5 
-    4     1     6     5 
-    5     1     6     5 
-    1     2     3     5 
+2 1 4 5 108.890000 384.091200
+2 1 5 5 108.890000 384.091200
+2 1 6 5 108.890000 384.091200
+4 1 5 5 108.400000 297.064000
+4 1 6 5 108.400000 297.064000
+5 1 6 5 108.400000 297.064000
+1 2 3 5 106.000000 481.160000
 
 [ dihedrals ]
 ;  ai    aj    ak    al funct            c0            c1            c2            c3            c4            c5
-    4     1     2     3     9 
-    5     1     2     3     9 
-    6     1     2     3     9 
+4 1 2 3 9 0.000000 0.753120 3
+5 1 2 3 9 0.000000 0.753120 3
+6 1 2 3 9 0.000000 0.753120 3
 
 ; Include Position restraint file
 #ifdef POSRES
-#include "posre.itp"
+#include "meoh/posre.itp"
 #endif
 
 ; Include water topology
-#include "../charmm36-jul2022.ff/tip3p.itp"
+#include "./charmm36-jul2022.ff/tip3p.itp"
 
 #ifdef POSRES_WATER
 ; Position restraint for each water oxygen
@@ -80,7 +80,7 @@ Other               3
 #endif
 
 ; Include topology for ions
-#include "../charmm36-jul2022.ff/ions.itp"
+#include "./charmm36-jul2022.ff/ions.itp"
 
 [ system ]
 ; Name
